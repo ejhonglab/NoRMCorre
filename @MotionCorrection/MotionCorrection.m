@@ -23,6 +23,7 @@ classdef MotionCorrection < handle
         gSig = 7;            % std of gaussian kernel for high pass filtering
         gSiz = 21;           % size of high pass filter
         file_orig;           % original file (used for 1p correction)        
+        Y;                   % movie
     end
     
     methods                
@@ -36,6 +37,7 @@ classdef MotionCorrection < handle
                 sizY = size(filename);
                 obj.T = sizY(end);          % assuming more than 1 frames
                 obj.dims = sizY(1:end-1);                      
+                obj.Y = obj.file;
             end
             obj.nd = length(obj.dims);  
             obj.options.d1 = obj.dims(1);
